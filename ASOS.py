@@ -6,7 +6,7 @@ import time
 entries_state = 0
 
 window = tk.Tk()
-window.geometry('1200x900')
+window.geometry('900x700')
 window.resizable(0, 0)
 window.title('ASOS') #this is the main window
 
