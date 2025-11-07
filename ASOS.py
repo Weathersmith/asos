@@ -173,23 +173,29 @@ centering_frame = tk.Frame(misc_frame, background='black')
 centering_frame.place(relx=0.5, rely=0.5, anchor='center', relwidth=1)
 
 #frames so that the labels and data line up how I want
+blank_miscframe_top = tk.Frame(centering_frame, background = 'black')
+blank_miscframe_top.grid(column=0, row=0, columnspan = 2)
+
 wind_frame = tk.Frame(centering_frame, background = 'black')
-wind_frame.grid(column=0, row=0, sticky='w')
+wind_frame.grid(column=0, row=1, sticky='w')
 
 relhum_frame = tk.Frame(centering_frame, background = 'black')
-relhum_frame.grid(column=0, row=1, sticky='w')
+relhum_frame.grid(column=0, row=2, sticky='w')
 
 slp_frame = tk.Frame(centering_frame, background = 'black')
-slp_frame.grid(column=0, row=2, sticky='w')
+slp_frame.grid(column=0, row=3, sticky='w')
 
 station_pressure_frame = tk.Frame(centering_frame, background = 'black')
-station_pressure_frame.grid(column=1, row=0, sticky='e')
+station_pressure_frame.grid(column=1, row=1, sticky='e')
 
 pressure_altitude_frame = tk.Frame(centering_frame, background = 'black')
-pressure_altitude_frame.grid(column=1, row=1, sticky='e')
+pressure_altitude_frame.grid(column=1, row=2, sticky='e')
 
 density_altitude_frame = tk.Frame(centering_frame, background = 'black')
-density_altitude_frame.grid(column=1, row=2, sticky='e')
+density_altitude_frame.grid(column=1, row=3, sticky='e')
+
+alert_frame_bottom = tk.Frame(centering_frame, background = 'black')
+alert_frame_bottom.grid(column=0, row=4, columnspan = 2)
 
 
 #now the content to fill in those frames
@@ -234,7 +240,7 @@ density_altitude_label.pack(side='right')
 
 
 keypad = tk.Frame(keypad_frame, background='black', highlightbackground='blue', highlightthickness=2)
-keypad.grid(row=0, column=0, ipady=75, ipadx=75)
+keypad.grid(row=0, column=0, ipady=25, ipadx=25)
 key_label_1 = tk.Label(keypad, text="SIGN", font=('Terminal', 15), background='black', highlightbackground='blue', highlightthickness=1, foreground='white')
 key_label_1.grid(row=2, column=0, sticky='nsew')
 key_label_2 = tk.Label(keypad, text="EDIT", font=('Terminal', 15), background='black', highlightbackground='blue', highlightthickness=1, foreground='white')
