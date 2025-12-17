@@ -1,12 +1,14 @@
 import tkinter as tk
 from tkinter import ttk
 import time
+from datetime import datetime
+from datetime import timezone
 
 #global variables
 entries_state = 0
 
 window = tk.Tk()
-window.geometry('900x700')
+window.geometry('800x600')
 window.resizable(0, 0)
 window.title('ASOS') #this is the main window
 
@@ -52,7 +54,9 @@ keypad_frame.pack(side = 'left', fill = 'both')
 #this is where the stuff that fill in the frames created above begins
 def get_time():   
     time_var = time.strftime("%H:%M:%S %m/%d/%yLST")
-    clock_label.config(text=time_var)
+    zulu_time = datetime.now(timezone.utc)
+    iso_zulu_time = zulu_time.strftime("%H%MZ")
+    clock_label.config(text=time_var + " " + iso_zulu_time)
     clock_label.after(1000, get_time)
 
 #output of clock function will be in the clock label              
@@ -61,7 +65,7 @@ clock_label.grid(row=0, column=0, sticky='w')
 
 
 #ASOS can be adjusted to different locations, name will be here
-location_label = tk.Label(clock_and_location_frame, text="Location Here!", font=('Terminal', 15), background='black',
+location_label = tk.Label(clock_and_location_frame, text="SALT LAKE CITY INTL ARPT", font=('Terminal', 15), background='black',
                           foreground='yellow', justify='right')
 location_label.grid(row=0, column=1, sticky='e')
 
@@ -163,10 +167,10 @@ remarks_placeholder.grid(row=5, column=2, pady=5, sticky='w', columnspan=10)
 
 #the following are placeholder labels for the prep report frame and the last report frames
 
-report_prep_label = tk.Label(prep_report_frame, font=('Terminal', 15), text="METAR KSLC 010554 18008KT 1 1/2SM RA BR FEW045CB SCT090 BKN180 OVC260 08/M01 A2988 RMK AO2 SLPNO CB VC NE MOV N T00820012", background = 'gray25', foreground='white', pady=30, padx=10, wraplength=900, justify='left')
-report_prep_label.grid(row=0, column = 0, sticky = 'w', ipadx = 10)
-last_report_label = tk.Label(last_report_frame, font=('Terminal', 15), text="METAR KSLC 010654 17008KT 10SM FEW045 FEW090 SCT180 BKN260 07/00 A2988 RMK AO2 SLPNO T00741003", background='black', foreground='white', pady=30, padx=10, wraplength=900, justify='left')
-last_report_label.grid(column=0, row=0, sticky='w', ipadx = 10)
+report_prep_label = tk.Label(prep_report_frame, font=('Terminal', 15), text=" ", background = 'gray25', foreground='white', pady=30, padx=10, wraplength=900, justify='left')
+report_prep_label.grid(row=0, column = 0, sticky = 'w', ipadx = 0)
+last_report_label = tk.Label(last_report_frame, font=('Terminal', 15), text=" ", background='black', foreground='white', pady=30, padx=10, wraplength=900, justify='left')
+last_report_label.grid(column=0, row=0, sticky='w', ipadx = 0)
 
 #the following is the packing frames for the misc frame
 centering_frame = tk.Frame(misc_frame, background='black')
