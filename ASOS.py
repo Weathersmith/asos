@@ -4,6 +4,8 @@ import time
 from datetime import datetime
 from datetime import timezone
 
+
+
 #global variables
 entries_state = 0
 
@@ -37,7 +39,7 @@ keypad_misc_frame.pack(side = 'top', fill = 'both')
 
 
 #report frame gets broken down into the prepped field and the last reported field
-prep_report_frame = tk.Frame(parent_report_frame, background = 'gray25')
+prep_report_frame = tk.Frame(parent_report_frame, background = 'black')
 prep_report_frame.pack(side = 'top', fill = 'x', padx = 5, expand = 'True')
 
 last_report_frame = tk.Frame(parent_report_frame, background = 'black')
@@ -167,7 +169,7 @@ remarks_placeholder.grid(row=5, column=2, pady=5, sticky='w', columnspan=10)
 
 #the following are placeholder labels for the prep report frame and the last report frames
 
-report_prep_label = tk.Label(prep_report_frame, font=('Terminal', 15), text=" ", background = 'gray25', foreground='white', pady=30, padx=10, wraplength=900, justify='left')
+report_prep_label = tk.Label(prep_report_frame, font=('Terminal', 15), text=" ", background = 'black', foreground='white', pady=30, padx=10, wraplength=900, justify='left')
 report_prep_label.grid(row=0, column = 0, sticky = 'w', ipadx = 0)
 last_report_label = tk.Label(last_report_frame, font=('Terminal', 15), text=" ", background='black', foreground='white', pady=30, padx=10, wraplength=900, justify='left')
 last_report_label.grid(column=0, row=0, sticky='w', ipadx = 0)
@@ -175,6 +177,8 @@ last_report_label.grid(column=0, row=0, sticky='w', ipadx = 0)
 #the following is the packing frames for the misc frame
 centering_frame = tk.Frame(misc_frame, background='black')
 centering_frame.place(relx=0.5, rely=0.5, anchor='center', relwidth=1)
+centering_frame.columnconfigure(index=0, weight=1)
+centering_frame.columnconfigure(index=1, weight=1)
 
 #frames so that the labels and data line up how I want
 blank_miscframe_top = tk.Frame(centering_frame, background = 'black')
@@ -189,14 +193,15 @@ relhum_frame.grid(column=0, row=2, sticky='w')
 slp_frame = tk.Frame(centering_frame, background = 'black')
 slp_frame.grid(column=0, row=3, sticky='w')
 
+
 station_pressure_frame = tk.Frame(centering_frame, background = 'black')
-station_pressure_frame.grid(column=1, row=1, sticky='e')
+station_pressure_frame.grid(column=1, row=1, sticky='w')
 
 pressure_altitude_frame = tk.Frame(centering_frame, background = 'black')
-pressure_altitude_frame.grid(column=1, row=2, sticky='e')
+pressure_altitude_frame.grid(column=1, row=2, sticky='w')
 
 density_altitude_frame = tk.Frame(centering_frame, background = 'black')
-density_altitude_frame.grid(column=1, row=3, sticky='e')
+density_altitude_frame.grid(column=1, row=3, sticky='w')
 
 alert_frame_bottom = tk.Frame(centering_frame, background = 'black')
 alert_frame_bottom.grid(column=0, row=4, columnspan = 2)
@@ -206,10 +211,10 @@ alert_frame_bottom.grid(column=0, row=4, columnspan = 2)
 mag_wind_label = tk.Label(wind_frame, text="MAG WIND: ", background='black', foreground='white', font=('Terminal', 15),
                           anchor='w', justify='left')
 mag_wind_label.pack(side='left')
-mag_wind_value = tk.Label(wind_frame, text="270/09G27", background='black', foreground='white', font=('Terminal', 15))
-mag_wind_value.pack(side='left', fill='both')
+mag_wind_value = tk.Label(wind_frame, text="100/10", background='black', foreground='white', font=('Terminal', 15))
+mag_wind_value.pack(side='left')
 
-station_pressure_value = tk.Label(station_pressure_frame, text="29.59", background='black', foreground='white',
+station_pressure_value = tk.Label(station_pressure_frame, text="25.72", background='black', foreground='white',
                                   font=('Terminal', 15))
 station_pressure_value.pack(side='right')
 station_pressure_label = tk.Label(station_pressure_frame, text="STATION PRESSURE: ", background='black', foreground='white',
@@ -219,25 +224,25 @@ station_pressure_label.pack(side='right')
 relative_humidity_label = tk.Label(relhum_frame, text="RELATIVE HUMIDITY: ", background='black',
                                    foreground='white', font=('Terminal', 15))
 relative_humidity_label.pack(side='left')
-relative_humidity_value = tk.Label(relhum_frame, text="70%", background='black', foreground='white',
+relative_humidity_value = tk.Label(relhum_frame, text="53", background='black', foreground='white',
                                    font=('Terminal', 15))
-relative_humidity_value.pack(side='left', fill='both')
+relative_humidity_value.pack(side='left')
 
-pressure_altitude_value = tk.Label(pressure_altitude_frame, text="4221", background='black', foreground='white',
+pressure_altitude_value = tk.Label(pressure_altitude_frame, text="4130", background='black', foreground='white',
                                    font=('Terminal', 15))
 pressure_altitude_value.pack(side='right')
 pressure_altitude_label = tk.Label(pressure_altitude_frame, text="PRESSURE ALTITUDE: ", background='black',
                                    foreground='white', font=('Terminal', 15))
 pressure_altitude_label.pack(side='right')
 
-slp_label = tk.Label(slp_frame, text="SEA LEVEL PRESSURE: ", background='black', foreground='white', font=('Terminal', 15))
+slp_label = tk.Label(slp_frame, text="SEA LVL PRESSURE: ", background='black', foreground='white', font=('Terminal', 15))
 slp_label.pack(side='left')
-slp_value = tk.Label(slp_frame, text="1020.25", background='black', foreground='white', font=('Terminal', 15))
-slp_value.pack(side='left', fill='both')
+slp_value = tk.Label(slp_frame, text="1015.5", background='black', foreground='white', font=('Terminal', 15))
+slp_value.pack(side='left')
 
-density_altitude_value = tk.Label(density_altitude_frame, text="6070", background='black', foreground='white',
+density_altitude_value = tk.Label(density_altitude_frame, text="4000", background='black', foreground='white',
                                   font=('Terminal', 15))
-density_altitude_value.pack(side='right')
+density_altitude_value.pack(side='right', expand=True)
 density_altitude_label = tk.Label(density_altitude_frame, text="DENSITY ALTITUDE: ", background='black', foreground='white',
                                   font=('Terminal', 15))
 density_altitude_label.pack(side='right')
@@ -325,9 +330,12 @@ def enable_or_disable(event):
 
 window.bind('<F1>', enable_or_disable)
 
+
+
+
 def celsius_to_fahrenheit(num):
     
-    faht = round((num * (9.0/5.0)) + 32.0, 1)
+    faht = round((num * (9.0/5.0)) + 32.0)
     return faht
     
 def fahrenheit_to_celsius(num):
@@ -335,7 +343,6 @@ def fahrenheit_to_celsius(num):
     celt = round((5.0/9.0)*(num-32), 1)
     return celt
     
-
 def show_temp_f_equivalent(event):
     
     tempf_textbox.delete(0, 'end')
@@ -351,14 +358,66 @@ def show_td_f_equivalent(event):
     tdf_textbox.delete(0, 'end')
     tdc_input = float(tdc_textbox.get())
     tdf_textbox.insert(0, celsius_to_fahrenheit(tdc_input)) 
+
+def show_td_c_equivalent(event):
+    tdc_textbox.delete(0, 'end')
+    tdf_input = float(tdf_textbox.get())
+    tdc_textbox.insert(0, fahrenheit_to_celsius(tdf_input))
     
 tempc_textbox.bind('<Return>', show_temp_f_equivalent)
 tempf_textbox.bind('<Return>', show_temp_c_equivalent)
 tdc_textbox.bind('<Return>', show_td_f_equivalent)
+tdf_textbox.bind('<Return>', show_td_c_equivalent)
+
+
+
+
        
+#remark builder, get info from text boxes then modify them into the T-group
+def t_group(self):
+
+    #temps start as floats for evaluation, then a string is used to make the T-group
+    temp = float(tempc_textbox.get())
+    dp = float(tdc_textbox.get())
+    
+    Tgroup = "T"
+
+    if temp >= 0:
+        Tgroup += '0'
+    elif temp < 0:
+        Tgroup += '1'
+
+    if (temp <= 10 and temp >= 0) or (temp > -10 and temp < 0):
+        Tgroup += '0'
+        
+    string_temp = str(temp)
+
+    if temp < 0:
+        string_temp = string_temp.replace('-', '')
+
+    string_temp = string_temp.replace('.', '')
+    Tgroup += string_temp
 
 
+    if dp >= 0:
+        Tgroup += '0'
+    elif dp < 0:
+        Tgroup += '1'
+        
+    if (dp <= 10 and dp >= 0) or (dp >= -10 and dp < 0):
+        Tgroup += '0'
 
+    string_dp = str(dp)
+    if dp < 0:
+        string_dp = string_dp.replace('-', '')
+
+    string_dp = string_dp.replace('.', '')
+    Tgroup += string_dp
+        
+    print(Tgroup)
+
+
+window.bind('<F2>', t_group)
 
 
 #def change_keypad(keypad_condition):
