@@ -373,7 +373,7 @@ tdf_textbox.bind('<Return>', show_td_c_equivalent)
 
 
        
-#remark builder, get info from text boxes then modify them into the T-group
+#function for building the t-group in the remarks
 def t_group(self):
 
     #temps start as floats for evaluation, then a string is used to make the T-group
@@ -414,10 +414,22 @@ def t_group(self):
     string_dp = string_dp.replace('.', '')
     Tgroup += string_dp
         
-    print(Tgroup)
+    return Tgroup
 
 
-window.bind('<F2>', t_group)
+
+
+def remarks_builder(self):
+     
+    remarks = "AO2 "
+    remarks += t_group(self) + " SLPNO"
+    remarks_placeholder.config(text = remarks)
+
+
+
+window.bind('<F2>', remarks_builder)  
+
+
 
 
 #def change_keypad(keypad_condition):
